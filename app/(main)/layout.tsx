@@ -12,17 +12,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Économie d'Énergie: Réduisez Votre Facture",
-  description: "Découvrez comment réduire vos factures d'énergie. Nos conseils et solutions pour une consommation plus économe et écologique.",
+  title: "Alarme maison : kits et systèmes d'alarme sans fil",
+  description: "Assurez votre sécurité contre les incendies ou cambriolages, avec notre système d'alarme maison pour particuliers.",
   icons: {
-    icon: "/apple-touch-icon.png",
+    icon: "/alarm_logo.png",
   },
   openGraph: {
-    images: ["/energie.png"],
+    images: ["/alarm_logo.png"],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/energie.png"],
+    images: ["/alarm_logo.png"],
   },
 };
 
