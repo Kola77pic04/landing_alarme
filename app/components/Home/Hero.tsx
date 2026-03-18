@@ -7,19 +7,21 @@ export default function HeroHome() {
         <>
             <section className="relative pb-12 md:pb-14 lg:pb-0 overflow-hidden text-white">
                 <div className="lg:hidden flex flex-col gap-4">
-                    <div className="relative h-58 md:h-96 ">
+                    <div className="relative h-64 md:h-96 ">
                         <div className="relative z-20 bg-[#e4464e] text-white">
                             <h2 className="text-2xl font-bold text-center">
-                                Protégez votre domicile avec notre système d'alarme.
+                                Protection domicile, maison, appartement.
                             </h2>
                             <p className="text-center text-xs font-medium">
-                                Installation rapide, en moins de 24 heures⁽²⁾.
+                                Installation rapide, en moins de 24 heures.
+                                <br />
+                                On veille sur vous, un point c’est tout.
                             </p>
                         </div>
                         <img
                             src="/assets/alarmes.png"
                             alt="alarmes"
-                            className="absolute inset-0 z-10 w-full h-58 md:h-96"
+                            className="absolute inset-0 z-10 w-full h-64 md:h-96"
                         />
                     </div>
                     <div className="px-3 mt-8">
@@ -35,7 +37,9 @@ export default function HeroHome() {
                                 Protégez votre domicile avec un système d’alarme fiable et performant
                             </h2>
                             <p className="reveal-up delay-200  sm:text-lg lg:text-xl font-light max-w-lg leading-relaxed">
-                                nstallation rapide en moins de 24 heures⁽²⁾, pour une sécurité immédiate.
+                                Installation rapide en moins de 24 heures, pour une sécurité immédiate.
+                                <br />
+                                On veille sur vous, un point c’est tout.
                             </p>
                             <div className="reveal-up delay-300 flex font-medium flex-wrap gap-4 pt-2 text-[13px] font-medium">
                                 <div className="flex items-center gap-2 bg-white/10 lg:bg-white/80 lg:text-slate-800 px-3 py-1.5 rounded-lg border border-black/10">

@@ -3,7 +3,7 @@ export const SecondPart = () => {
   const data = [
     {
       image: "/assets/telesurveillance.jpg",
-      title: "Télésurveillance à partir de 1,25€ par jour",
+      title: "Télésurveillance 24h/24 & 7j/7",
     },
     {
       image: "/assets/garantie.jpg",
