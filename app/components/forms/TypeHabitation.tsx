@@ -34,7 +34,7 @@ export default function TypeHabitation({ onTypeChange, rollbackStep, typeForm }:
         e.preventDefault();
         setErrors(null);
         if (type.trim() === "") {
-            setErrors("Veuillez sélectionner un type de client");
+            setErrors("Veuillez sélectionner le type de bien");
             return;
         }
         onTypeChange(type);
