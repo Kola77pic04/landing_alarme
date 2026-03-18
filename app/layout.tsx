@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     icon: "/alarm_logo.png",
   },
   openGraph: {
-    images: ["/alarme.jpeg"],
+    images: ["/alarme.jpg"],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/alarme.jpeg"],
+    images: ["/alarme.jpg"],
   },
 };
 
