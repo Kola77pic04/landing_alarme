@@ -26,7 +26,7 @@ export default function Home() {
   const [step, setStep] = useState<"type" | "residence" | "taille" | "equipement" | "occupants" | "postal" | "contact" | "finish">("type");
 
   const [count, setCount] = useState<number>(1);
-  const [progress, setProgress] = useState<number>(Math.floor((count * 100) / 7));
+  const [progress, setProgress] = useState<number>(Math.floor((count * 100) / 5));
   const [direction, setDirection] = useState(1);
   const [initialized, setInitialized] = useState(false);
 
@@ -36,7 +36,7 @@ export default function Home() {
     } else {
       setDirection(-1);
       setCount(count - 1);
-      setProgress(Math.floor(((count - 1) * 100) / 7));
+      setProgress(Math.floor(((count - 1) * 100) / 5));
       if (step === "residence") {
         setStep("type");
       }
@@ -66,7 +66,7 @@ export default function Home() {
     }));
     setStep("residence");
     setCount(count + 1);
-    setProgress(Math.floor(((count + 1) * 100) / 7));
+    setProgress(Math.floor(((count + 1) * 100) / 5));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -78,7 +78,7 @@ export default function Home() {
     }));
     setStep("taille");
     setCount(count + 1);
-    setProgress(Math.floor(((count + 1) * 100) / 7));
+    setProgress(Math.floor(((count + 1) * 100) / 5));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -90,7 +90,7 @@ export default function Home() {
     }));
     setStep("equipement");
     setCount(count + 1);
-    setProgress(Math.floor(((count + 1) * 100) / 7));
+    setProgress(Math.floor(((count + 1) * 100) / 5));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -102,7 +102,7 @@ export default function Home() {
     }));
     setStep("occupants");
     setCount(count + 1);
-    setProgress(Math.floor(((count + 1) * 100) / 7));
+    setProgress(Math.floor(((count + 1) * 100) / 5));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -112,9 +112,9 @@ export default function Home() {
       ...prev,
       people: people
     }));
-    setStep("postal");
+    setStep("finish");
     setCount(count + 1);
-    setProgress(Math.floor(((count + 1) * 100) / 7));
+    setProgress(Math.floor(((count + 1) * 100) / 5));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -126,7 +126,7 @@ export default function Home() {
     }));
     setStep("contact");
     setCount(count + 1);
-    setProgress(Math.floor(((count + 1) * 100) / 7));
+    setProgress(Math.floor(((count + 1) * 100) / 5));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -151,7 +151,7 @@ export default function Home() {
       setStep("residence");
       setDirection(1);
       setCount(count + 1);
-      setProgress(Math.floor(((count + 1) * 100) / 7));
+      setProgress(Math.floor(((count + 1) * 100) / 5));
       setForm((prev) => ({
         ...prev,
         type: type,

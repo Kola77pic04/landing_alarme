@@ -47,7 +47,6 @@ export default function ZipCode({ onZipCodeChange, rollbackStep, zipCodeForm }: 
                     maxLength={5}
                     pattern="\d{5}"
                     value={zipCode}
-                    autoFocus={true}
                     onChange={(e) => handleChange(e)}
                     className="w-full bg-white text-[#062b31] px-4 py-3 lg:py-4 rounded-lg text-sm lg:text-base font-medium border border-slate-300 outline-none"
                     placeholder="75001"
