@@ -149,7 +149,6 @@ export default function Contact({ onContactSubmit, rollbackStep, firstnameForm, 
                         id="firstname"
                         inputMode="text"
                         value={firstName}
-                        autoFocus={true}
                         onChange={(e) => handleChange(e)}
                         className="w-full bg-white text-[#062b31] px-4 py-3 lg:py-4 rounded-lg text-sm lg:text-base outline-none border border-slate-300 font-medium"
                         placeholder="Prénom"
