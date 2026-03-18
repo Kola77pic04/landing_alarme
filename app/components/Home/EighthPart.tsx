@@ -25,7 +25,7 @@ export const EighthPart = () => {
 
   return (
     <>
-      <div className="px-3 w-full bg-white pt-8 lg:pt-10 pb-12 text-slate-800">
+      <div className="px-3 w-full bg-white pt-8 lg:pt-10 pb-10 lg:pb-11 text-slate-800">
         <div className="max-w-6xl mx-auto flex flex-col gap-8">
           <h2 className="font-bold text-xl text-center lg:text-3xl lg:w-[80%] mx-auto">Notre système : fiabilité et simplicité. <br className="md:hidden" /> Choisissez la tranquillité !</h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3 text-gray-700">
