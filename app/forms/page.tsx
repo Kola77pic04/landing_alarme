@@ -70,11 +70,11 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleResidenceChange = (type: string) => {
+  const handleResidenceChange = (residence: string) => {
     setDirection(1);
     setForm((prev) => ({
       ...prev,
-      type: type
+      residence: residence
     }));
     setStep("taille");
     setCount(count + 1);
