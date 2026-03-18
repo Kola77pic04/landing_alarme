@@ -26,7 +26,8 @@ export default function Home() {
   const [step, setStep] = useState<"type" | "residence" | "taille" | "equipement" | "occupants" | "postal" | "contact" | "finish">("type");
 
   const [count, setCount] = useState<number>(1);
-  const [progress, setProgress] = useState<number>(Math.floor((count * 100) / 5));
+  const [displayCount, setDisplayCount] = useState<number>(5);
+  const [progress, setProgress] = useState<number>(Math.floor((count * 100) / displayCount));
   const [direction, setDirection] = useState(1);
   const [initialized, setInitialized] = useState(false);
 
@@ -36,7 +37,7 @@ export default function Home() {
     } else {
       setDirection(-1);
       setCount(count - 1);
-      setProgress(Math.floor(((count - 1) * 100) / 5));
+      setProgress(Math.floor(((count - 1) * 100) / displayCount));
       if (step === "residence") {
         setStep("type");
       }
@@ -66,7 +67,6 @@ export default function Home() {
     }));
     setStep("residence");
     setCount(count + 1);
-    setProgress(Math.floor(((count + 1) * 100) / 5));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -78,7 +78,6 @@ export default function Home() {
     }));
     setStep("taille");
     setCount(count + 1);
-    setProgress(Math.floor(((count + 1) * 100) / 5));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -90,7 +89,6 @@ export default function Home() {
     }));
     setStep("equipement");
     setCount(count + 1);
-    setProgress(Math.floor(((count + 1) * 100) / 5));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -102,19 +100,23 @@ export default function Home() {
     }));
     setStep("occupants");
     setCount(count + 1);
-    setProgress(Math.floor(((count + 1) * 100) / 5));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handlePeopletChange = (people: string) => {
+  const handlePeopletChange = async (people: string) => {
     setDirection(1);
-    setForm((prev) => ({
-      ...prev,
+    const updateForm = {
+      ...form,
       people: people
-    }));
-    setStep("finish");
+    };
+    setForm(updateForm);
+    if (displayCount === 5) {
+      await handleFinish(updateForm);
+      setStep("finish");
+    } else {
+      setStep("postal");
+    }
     setCount(count + 1);
-    setProgress(Math.floor(((count + 1) * 100) / 5));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -126,11 +128,10 @@ export default function Home() {
     }));
     setStep("contact");
     setCount(count + 1);
-    setProgress(Math.floor(((count + 1) * 100) / 5));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleContactSubmit = (firstName: string, lastName: string, phone: string) => {
+  const handleContactSubmit = async (firstName: string, lastName: string, phone: string) => {
     setDirection(1);
     const updateForm = {
       ...form,
@@ -139,29 +140,64 @@ export default function Home() {
       phone: phone
     };
     setForm(updateForm);
-    // API
-    console.log("Form submitted:", updateForm);
+    await handleFinish(updateForm);
     setStep("finish");
+  };
+
+  const handleFinish = async (form: any) => {
+    // API
+    console.log("Form submitted:", form);
   };
 
   useEffect(() => {
     const type = localStorage.getItem("type");
+    const utm_source = localStorage.getItem("utm_source");
+    const redirect = localStorage.getItem("redirect");
+
+    if (utm_source && ["google", "facebook"].includes(utm_source?.toLocaleLowerCase().trim() || "")) {
+      setStep("residence");
+      setDirection(1);
+      setDisplayCount(7);
+      setCount(count + 1);
+      setForm((prev) => ({
+        ...prev,
+        utm_source: utm_source,
+      }));
+      localStorage.removeItem("utm_source");
+      setInitialized(true);
+    }
+
+    if (redirect && redirect.trim() === "true") {
+      setStep("residence");
+      setDirection(1);
+      setDisplayCount(5);
+      setCount(count + 1);
+      setForm((prev) => ({
+        ...prev,
+        redirect: redirect,
+      }));
+      localStorage.removeItem("redirect");
+      setInitialized(true);
+    }
 
     if (type) {
       setStep("residence");
       setDirection(1);
       setCount(count + 1);
-      setProgress(Math.floor(((count + 1) * 100) / 5));
       setForm((prev) => ({
         ...prev,
         type: type,
       }));
       localStorage.removeItem("type");
       setInitialized(true);
-    } else {
-      setInitialized(true);
     }
+
+    setInitialized(true);
   }, []);
+
+  useEffect(() => {
+    setProgress(Math.floor((count * 100) / displayCount));
+  }, [count, displayCount]);
 
   return (
     <FormsLayout>

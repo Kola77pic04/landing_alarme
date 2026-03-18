@@ -1,8 +1,23 @@
+"use client"
+
 import Icon from '@mdi/react';
 import { mdiCheck } from '@mdi/js';
 import DemoForm2 from '../forms/DemoForm2';
+import { useEffect } from 'react';
 
 export default function HeroHome() {
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const utm_source = urlParams.get('utm_source');
+    if (utm_source) {
+      localStorage.setItem('utm_source', utm_source);
+    }
+    const redirectParam = urlParams.get('redirect');
+    if (redirectParam) {
+      localStorage.setItem('redirect', redirectParam);
+    }
+  }, []);
+  
     return (
         <>
             <section className="relative pb-12 md:pb-14 lg:pb-0 overflow-hidden text-white">
