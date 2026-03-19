@@ -65,7 +65,7 @@ export default function HeroHome() {
                                 </div>
                             </div>
                         </div>
-                        <div id="demo">
+                        <div id="demo" className="flex justify-end">
                             <DemoForm2 />
                         </div>
                     </div>
