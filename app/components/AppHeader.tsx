@@ -16,7 +16,7 @@ export default function AppHeader() {
                         <h1 className="text-sm lg:text-lg font-bold text-slate-900">Sécurisez <br className="lg:hidden" /> votre maison</h1>
                     </div>
 
-                    <button onClick={handleTop} className="cursor-pointer px-6 py-2.5 text-center rounded-full bg-[#e4464e] text-white text-xs lg:text-[13px] font-medium lg:font-semibold hover:bg-[#c13a3f] transition-all hover:shadow-lg transform hover:-translate-y-0.5">
+                    <button onClick={handleTop} className="cursor-pointer px-6 py-2.5 text-center rounded-full bg-[#f15e00] text-white text-xs lg:text-[13px] font-medium lg:font-semibold hover:bg-[#c13a3f] transition-all hover:shadow-lg transform hover:-translate-y-0.5">
                         Fais un devis
                     </button>
                 </div>

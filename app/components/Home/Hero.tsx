@@ -23,7 +23,7 @@ export default function HeroHome() {
             <section className="relative pb-12 md:pb-14 lg:pb-0 overflow-hidden text-white">
                 <div className="lg:hidden flex flex-col gap-4">
                     <div className="relative h-64 md:h-96 ">
-                        <div className="relative z-20 bg-[#e4464e] text-white">
+                        <div className="relative z-20 bg-[#f15e00] text-white">
                             <h2 className="text-2xl font-bold text-center">
                                 Protection domicile, maison, appartement.
                             </h2>
@@ -58,10 +58,10 @@ export default function HeroHome() {
                             </p>
                             <div className="reveal-up delay-300 flex font-medium flex-wrap gap-4 pt-2 text-[13px] font-medium">
                                 <div className="flex items-center gap-2 bg-white/10 lg:bg-white/80 lg:text-slate-800 px-3 py-1.5 rounded-lg border border-black/10">
-                                    <Icon path={mdiCheck} className="w-4 lg:-mt-0.5 h-4 text-[#e4464e]" /> Plus de 5 000 clients déjà protégés
+                                    <Icon path={mdiCheck} className="w-4 lg:-mt-0.5 h-4 text-[#f15e00]" /> Plus de 5 000 clients déjà protégés
                                 </div>
                                 <div className="flex items-center gap-2 bg-white/10 lg:bg-white/80 lg:text-slate-800 px-3 py-1.5 rounded-lg border border-black/10">
-                                    <Icon path={mdiCheck} className="w-4 lg:-mt-0.5 h-4 text-[#e4464e]" /> Des solutions adaptées à chaque logement
+                                    <Icon path={mdiCheck} className="w-4 lg:-mt-0.5 h-4 text-[#f15e00]" /> Des solutions adaptées à chaque logement
                                 </div>
                             </div>
                         </div>

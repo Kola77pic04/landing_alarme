@@ -49,11 +49,11 @@ export default function DemoForm2() {
             <form className="space-y-4 lg:space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-3 gap-3 lg:gap-2">
                     {tabs.map((tab, index) => (
-                        <div key={index} className={`lg:h-40 relative flex-1 flex flex-col lg:justify-center items-center gap-2 p-4 rounded-lg border cursor-pointer ${position === index ? "border-[#e4464e] bg-[#e4464e]/5" : "bg-white border-slate-200"}`} onClick={() => handleSelectedTab(index, tab.label)}>
+                        <div key={index} className={`lg:h-40 relative flex-1 flex flex-col lg:justify-center items-center gap-2 p-4 rounded-lg border cursor-pointer ${position === index ? "border-[#f15e00] bg-[#f15e00]/5" : "bg-white border-slate-200"}`} onClick={() => handleSelectedTab(index, tab.label)}>
                             <img src={tab.image} alt={tab.label} className="w-14 h-14 lg:w-16 lg:h-16 mx-auto object-cover" />
                             <p className="text-center text-slate-700 text-xs lg:uppercase font-semibold">{tab.label}</p>
                             <span className="absolute top-2 right-2 w-4 h-4 rounded-full flex items-center justify-center p-1 border-slate-500 border-[1px]">
-                                <span className={`${position === index ? "bg-[#e4464e]" : ""} w-2 h-2 p-1 rounded-full`}></span>
+                                <span className={`${position === index ? "bg-[#f15e00]" : ""} w-2 h-2 p-1 rounded-full`}></span>
                             </span>
                         </div>
                     ))}

@@ -212,7 +212,7 @@ export default function Home() {
                 <span className="text-xs lg:text-sm text-red-800 font-semibold">{progress}%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className={`h-2 bg-gradient-to-r from-red-500 to-red-700 rounded-lg`} style={{ width: `${progress}%` }}></div>
+                <div className={`h-2 bg-gradient-to-r from-orange-500 to-orange-700 rounded-lg`} style={{ width: `${progress}%` }}></div>
               </div>
             </div>}
             <AnimatePresence mode="wait">

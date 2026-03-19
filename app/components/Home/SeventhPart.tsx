@@ -40,7 +40,7 @@ export const SeventhPart = () => {
               <article key={index} className="flex flex-col gap-3 bg-white rounded-xl">
                 <img src={item.image} alt={item.title} className="w-full h-48 md:h-72 rounded-t-xl object-cover" />
                 <div className="p-3 flex flex-col gap-3">
-                  <h3 className="text-[18px] font-bold text-[#e4464e]">{item.title}</h3>
+                  <h3 className="text-[18px] font-bold text-[#f15e00]">{item.title}</h3>
                   <ul className="flex flex-col gap-3 lg:gap-1.5">
                     {item.tabDescription.map((description, index) => (
                       <li key={index} className="flex items-start gap-2 text-[17px] text-gray-700">

@@ -65,7 +65,7 @@ export const SecondPart = () => {
 
   return (
     <>
-      <div className="w-full bg-[#e4464e] pt-10 pb-14 text-white">
+      <div className="w-full bg-[#f15e00] pt-10 pb-14 text-white">
         <div className="px-3 max-w-6xl mx-auto flex flex-col gap-8">
           <h2 className="font-bold text-3xl text-center lg:text-4xl">Pourquoi nous ?</h2>
           <div className="grid grid-cols-2 gap-x-2 gap-y-6 lg:gap-6 lg:grid-cols-3">

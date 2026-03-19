@@ -23,8 +23,8 @@ export const SixthPart = () => {
           <div className="grid grid-cols-1 gap-5 lg:gap-4 lg:grid-cols-3 text-slate-700">
             {questions.map((item, index) => (
               <article key={index} className="flex flex-col gap-3 md:gap-4 bg-white p-3 rounded-lg border-slate-200 border transition-all duration-500">
-                <span className="font-bold text-lg text-white bg-[#e4464e] w-10 h-10 rounded flex items-center justify-center flex-shrink-0">{index + 1}</span>
-                <h3 className="text-lg font-bold text-[#e4464e]">{item.title}</h3>
+                <span className="font-bold text-lg text-white bg-[#f15e00] w-10 h-10 rounded flex items-center justify-center flex-shrink-0">{index + 1}</span>
+                <h3 className="text-lg font-bold text-[#f15e00]">{item.title}</h3>
                 <p className="text-[17px] text-slate-700" dangerouslySetInnerHTML={{ __html: item.description }}></p>
               </article>
             ))}
