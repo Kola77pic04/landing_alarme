@@ -34,8 +34,8 @@ export default function HeroHome() {
                             </p>
                         </div>
                         <img
-                            src="/assets/alarmes.png"
-                            alt="alarmes"
+                            src="/assets/modern_home.jpg"
+                            alt="modern_home"
                             className="absolute inset-0 z-10 w-full h-64 md:h-96"
                         />
                     </div>
@@ -47,7 +47,7 @@ export default function HeroHome() {
                 <div className="hidden lg:block bg-hero lg:pt-24 lg:pb-26 xl:pb-24">
                     <div className="absolute inset-0 skew-y-0 bg-black opacity-40 transform origin-top-left z-0"></div>
                     <div className="lg:grid relative z-10 max-w-6xl mx-auto px-6 2xl:px-0 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-                        <div className="space-y-6 lg:order-2">
+                        <div className="space-y-6">
                             <h2 className="reveal-up delay-100 text-[42px] sm:text-5xl xl:text-[3.5rem] 2xl:text-6xl font-semibold tracking-tight leading-[1.1]">
                                 Protégez votre domicile avec un système d’alarme fiable et performant
                             </h2>
@@ -65,7 +65,7 @@ export default function HeroHome() {
                                 </div>
                             </div>
                         </div>
-                        <div className="lg:order-1" id="demo">
+                        <div id="demo">
                             <DemoForm2 />
                         </div>
                     </div>

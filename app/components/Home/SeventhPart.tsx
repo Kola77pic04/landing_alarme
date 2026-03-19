@@ -2,7 +2,7 @@ export const SeventhPart = () => {
 
   const questions = [
     {
-      image: "/assets/detecteur_mouvement.png",
+      image: "/assets/detecteur_mouvement.jpg",
       title: "Détecteur de mouvement photos",
       tabDescription: [
         "Capte les mouvements ainsi que la chaleur corporelle",
@@ -11,7 +11,7 @@ export const SeventhPart = () => {
       ]
     },
     {
-      image: "/assets/detecteur_fumee.png",
+      image: "/assets/detecteur_fumee.jpg",
       title: "Détecteur de fumée",
       tabDescription: [
         "Détecte précocement toute chaleur ou fumée inhabituelle",
@@ -20,7 +20,7 @@ export const SeventhPart = () => {
       ]
     },
     {
-      image: "/assets/detecteur_porte.png",
+      image: "/assets/detecteur_porte.jpg",
       title: "Détecteur d'ouverture porte et fenêtre",
       tabDescription: [
         "Envoie immédiatement des alertes à la télésurveillance dès la moindre tentative d’intrusion",
@@ -38,7 +38,7 @@ export const SeventhPart = () => {
           <div className="grid grid-cols-1 gap-5 lg:gap-4 md:grid-cols-3 text-gray-700">
             {questions.map((item, index) => (
               <article key={index} className="flex flex-col gap-3 bg-white rounded-xl">
-                <img src={item.image} alt={item.title} className="w-full md:h-72 lg:h-auto rounded-t-xl object-cover" />
+                <img src={item.image} alt={item.title} className="w-full h-48 md:h-72 rounded-t-xl object-cover" />
                 <div className="p-3 flex flex-col gap-3">
                   <h3 className="text-[18px] font-bold text-[#e4464e]">{item.title}</h3>
                   <ul className="flex flex-col gap-3 lg:gap-1.5">

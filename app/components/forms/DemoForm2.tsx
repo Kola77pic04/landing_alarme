@@ -2,19 +2,19 @@
 
 import { useState } from "react";
 
-export default function DemoForm2() {
+export default function DemoForm2() {    
     const tabs = [
         {
             label: "Ma maison",
-            image: "/assets/maison.webp"
+            image: "/assets/maison.png"
         },
         {
             label: "Mon appartement",
-            image: "/assets/appartement.webp"
+            image: "/assets/appartement.png"
         },
         {
             label: "Mon entreprise",
-            image: "/assets/entreprise.webp"
+            image: "/assets/societe.gif"
         },
     ];
     const [selectedTab, setSelectedTab] = useState<string>("");

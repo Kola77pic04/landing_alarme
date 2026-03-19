@@ -8,15 +8,15 @@ export default function TypeHabitation({ onTypeChange, rollbackStep, typeForm }:
     const types = [
         {
             label: "Ma maison",
-            image: "/assets/maison.webp"
+            image: "/assets/maison.png"
         },
         {
             label: "Mon appartement",
-            image: "/assets/appartement.webp"
+            image: "/assets/appartement.png"
         },
         {
             label: "Mon entreprise",
-            image: "/assets/entreprise.webp"
+            image: "/assets/societe.gif"
         },
     ];
     const [position, setPosition] = useState<number | null>(null);
