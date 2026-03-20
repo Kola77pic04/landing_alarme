@@ -52,7 +52,7 @@ export const SecondPart = () => {
       ),
     },
     {
-      title: " Une appli contrôle à distance",
+      title: " Une appli de contrôle à distance",
       description:
         "Vous contrôlez à distance le système d’alarme de votre foyer via votre smartphone en toute simplicité",
       icon: (
