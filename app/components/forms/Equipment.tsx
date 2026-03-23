@@ -41,7 +41,7 @@ export default function Equipment({ onEquipmentChange, rollbackStep, equipmentFo
     return (
         <div className="space-y-4 lg:space-y-6">
             <div className="flex flex-col gap-4">
-                <h2 className="font-bold text-lg lg:text-3xl text-slate-800">Êtes-vous déjà équipé d'un système d'alarme ?</h2>
+                <h2 className="font-bold text-lg lg:text-3xl text-slate-800">Êtes-vous déjà équipé d'une alarme ?</h2>
                 <div className="grid grid-cols-1 gap-3 lg:gap-2.5">
                     {equipments.map((equipment, index) => (
                         <div key={index} className={`relative flex-1 flex items-center gap-2 p-4 lg:py-4.5 rounded-lg border cursor-pointer ${position === index ? "border-[#f15e00] bg-[#f15e00]/5" : "bg-white border-slate-200"}`} onClick={() => handleSelect(index, equipment.label)}>
