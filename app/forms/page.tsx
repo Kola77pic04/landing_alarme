@@ -27,6 +27,7 @@ export default function Home() {
     firstname: "",
     lastname: "",
     phone: "",
+    favoris: "",
   });
   const [step, setStep] = useState<"type" | "residence" | "taille" | "equipement" | "occupants" | "animaux" | "postal" | "contact" | "numéro" | "finish">("type");
 
@@ -36,6 +37,41 @@ export default function Home() {
   const [direction, setDirection] = useState(1);
   const [initialized, setInitialized] = useState(false);
   const [show, setShow] = useState(false);
+  const [selectedPartner, setSelectedPartner] = useState<string[]>([]);
+  const [isPartnersModalOpen, setIsPartnersModalOpen] = useState(false);
+  const [partners, setPartners] = useState<{ name: string; value: string; link: string; checked: boolean }[]>([{ name: "ENGIE (Consulter la <a href='https://www.engie.fr/personal-data.html' target='_blank' class='underline'>RGPD</a>)", value: "Engie", link: "https://www.engie.fr/personal-data.html", checked: true }, { name: "TotalEnergies", value: "TotalEnergies", link: "", checked: true }, { name: "ENI Plénitude", value: "ENI Plénitude", link: "", checked: true }, { name: "Vattenfall", value: "Vattenfall", link: "", checked: true }, { name: "Alpiq", value: "Alpiq", link: "", checked: true }, { name: "Ilek", value: "Ilek", link: "", checked: true }, { name: "Orange Maison Protégée", value: "Orange Maison Protégée", link: "", checked: true }]);
+
+  // Toggle checked state
+  const changePartnerChecked = (event: any, partnerValue: string) => {
+    event.preventDefault();
+    setPartners(prev =>
+      prev.map(p => (p.value === partnerValue ? { ...p, checked: !p.checked } : p))
+    );
+  };
+
+  // Ouvre la modal en sélectionnant uniquement les partenaires checked
+  const handlePartnersModalOpen = (event: any) => {
+    event.preventDefault();
+
+    // 1️⃣ On filtre seulement les partenaires filtrés (filteredPartners)
+    // 2️⃣ On prend ceux qui sont checked
+    const selected = partners
+      .filter(p => p.checked)
+      .map(p => p.value);
+
+    // 3️⃣ On met à jour le state
+    setSelectedPartner(selected);
+    setForm(prev => ({ ...prev, favoris: selected.join(", ") }));
+
+    // 4️⃣ Ferme la modal
+    setIsPartnersModalOpen(false);
+  };
+
+  // Fermer la modal
+  const cancelPartnersModalOpen = (event: any) => {
+    event.preventDefault();
+    setIsPartnersModalOpen(false);
+  };
 
   const rollbackStep = () => {
     if (step === "type") {
@@ -69,6 +105,10 @@ export default function Home() {
         setStep("contact");
       }
     }
+  };
+
+  const showPartnersModal = () => {
+    setIsPartnersModalOpen(true);
   };
 
   const handleTypeChange = (type: string) => {
@@ -243,7 +283,7 @@ export default function Home() {
   }, [count, displayCount]);
 
   useEffect(() => {
-    if(form.phone && step === "finish") {
+    if (form.phone && step === "finish") {
       setTimeout(() => {
         setShow(true);
       }, 11000);
@@ -251,57 +291,76 @@ export default function Home() {
   }, [form.phone, step]);
 
   return (
-    <FormsLayout>
-      <main className="flex flex-col gap-4">
-        {!initialized ? (
-          <div className="text-center py-20 text-gray-500">Chargement…</div>
-        ) : (
-          <>
-            {step !== "finish" && <div className="px-6 py-2 bg-[#f15e00] mb-2">
-              <h2 className="text-xl text-center lg:text-3xl text-white font-semibold tracking-tight">Votre devis gratuit en 1 minute</h2>
-            </div>}
-            {!["postal", "contact", "numéro", "finish"].includes(step) && <div className="flex flex-col gap-2">
-              <div className="flex justify-between items-center">
-                <span className="text-xs lg:text-sm text-slate-800 font-semibold">Étape : <span className="capitalize">{step}</span></span>
-                <span className="text-xs lg:text-sm text-red-800 font-semibold">{progress}%</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className={`h-2 bg-gradient-to-r from-orange-500 to-orange-700 rounded-lg`} style={{ width: `${progress}%` }}></div>
-              </div>
-            </div>}
+    <div className="">
+      <FormsLayout>
+        <main className="flex flex-col gap-4">
+          {!initialized ? (
+            <div className="text-center py-20 text-gray-500">Chargement…</div>
+          ) : (
+            <>
+              {step !== "finish" && <div className="px-6 py-2 bg-[#f15e00] mb-2">
+                <h2 className="text-xl text-center lg:text-3xl text-white font-semibold tracking-tight">Votre devis gratuit en 1 minute</h2>
+              </div>}
+              {!["postal", "contact", "numéro", "finish"].includes(step) && <div className="flex flex-col gap-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-xs lg:text-sm text-slate-800 font-semibold">Étape : <span className="capitalize">{step}</span></span>
+                  <span className="text-xs lg:text-sm text-red-800 font-semibold">{progress}%</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className={`h-2 bg-gradient-to-r from-orange-500 to-orange-700 rounded-lg`} style={{ width: `${progress}%` }}></div>
+                </div>
+              </div>}
+              {show && <div className="absolute lg:hidden inset-0 bg-[url('/assets/modern_home.jpg')] bg-cover bg-center h-[200px]">
+                <div className="text-white text-lg text-center p-1 bg-[#f15e00] font-bold">-20% OFFERTS sur les packs</div>
+              </div>}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={step}
+                  initial={{ x: direction * 50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: direction * -50, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  style={{ willChange: "transform" }}
+                >
+                  {step === "type" && <TypeHabitation onTypeChange={handleTypeChange} rollbackStep={rollbackStep} typeForm={form.type} />}
+                  {step === "residence" && <Residence onResidenceChange={handleResidenceChange} rollbackStep={rollbackStep} residenceForm={form.residence} />}
+                  {step === "taille" && <HeightHabitation onHeightHabitationChange={handleHeightHabitationChange} rollbackStep={rollbackStep} heightHabitationForm={form.heightHabitation} />}
+                  {step === "equipement" && <Equipment onEquipmentChange={handleEquipmentChange} rollbackStep={rollbackStep} equipmentForm={form.equipment} />}
+                  {step === "occupants" && <People onPeopleChange={handlePeopletChange} rollbackStep={rollbackStep} peopleForm={form.people} />}
+                  {step === "animaux" && <Pet onPetChange={handlePetChange} rollbackStep={rollbackStep} petForm={form.pet} />}
+                  {step === "postal" && <ZipCode onZipCodeChange={handleZipCodeChange} rollbackStep={rollbackStep} zipCodeForm={form.zipCode} />}
+                  {step === "contact" && <Contact onContactSubmit={handleContactSubmit} rollbackStep={rollbackStep} cityForm={form.city} firstnameForm={form.firstname} lastnameForm={form.lastname} />}
+                  {step === "numéro" && <PhoneContact onPhoneContactSubmit={handlePhoneNumberSubmit} showPartnersModal={showPartnersModal} firstnameForm={form.firstname} lastnameForm={form.lastname} phoneForm={form.phone} />}
+                  {step === "finish" && <FinishStep />}
+                </motion.div>
+              </AnimatePresence>
+              {["postal", "contact", "numéro"].includes(step) && <div className="flex flex-col gap-2 mt-3">
+                <div className="w-full bg-gray-200 rounded-full h-4">
+                  <div className={`h-4 bg-gradient-to-r from-orange-500 to-orange-700 rounded-lg text-center text-white text-xs`} style={{ width: `${progress}%` }}>{progress}%</div>
+                </div>
+              </div>}
+            </>
+          )}
+        </main>
+      </FormsLayout>
 
-            {show && <div className="absolute lg:hidden inset-0 bg-[url('/assets/modern_home.jpg')] bg-cover bg-center h-[200px]">
-              <div className="text-white text-lg text-center p-1 bg-[#f15e00] font-bold">-20% OFFERTS sur les packs</div>
-            </div>}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={step}
-                initial={{ x: direction * 50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: direction * -50, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                style={{ willChange: "transform" }}
-              >
-                {step === "type" && <TypeHabitation onTypeChange={handleTypeChange} rollbackStep={rollbackStep} typeForm={form.type} />}
-                {step === "residence" && <Residence onResidenceChange={handleResidenceChange} rollbackStep={rollbackStep} residenceForm={form.residence} />}
-                {step === "taille" && <HeightHabitation onHeightHabitationChange={handleHeightHabitationChange} rollbackStep={rollbackStep} heightHabitationForm={form.heightHabitation} />}
-                {step === "equipement" && <Equipment onEquipmentChange={handleEquipmentChange} rollbackStep={rollbackStep} equipmentForm={form.equipment} />}
-                {step === "occupants" && <People onPeopleChange={handlePeopletChange} rollbackStep={rollbackStep} peopleForm={form.people} />}
-                {step === "animaux" && <Pet onPetChange={handlePetChange} rollbackStep={rollbackStep} petForm={form.pet} />}
-                {step === "postal" && <ZipCode onZipCodeChange={handleZipCodeChange} rollbackStep={rollbackStep} zipCodeForm={form.zipCode} />}
-                {step === "contact" && <Contact onContactSubmit={handleContactSubmit} rollbackStep={rollbackStep} cityForm={form.city} firstnameForm={form.firstname} lastnameForm={form.lastname} />}
-                {step === "numéro" && <PhoneContact onPhoneContactSubmit={handlePhoneNumberSubmit} rollbackStep={rollbackStep} firstnameForm={form.firstname} lastnameForm={form.lastname} phoneForm={form.phone} />}
-                {step === "finish" && <FinishStep />}
-              </motion.div>
-            </AnimatePresence>
-            {["postal", "contact", "numéro"].includes(step) && <div className="flex flex-col gap-2 mt-3">
-              <div className="w-full bg-gray-200 rounded-full h-4">
-                <div className={`h-4 bg-gradient-to-r from-orange-500 to-orange-700 rounded-lg text-center text-white text-xs`} style={{ width: `${progress}%` }}>{progress}%</div>
+      {isPartnersModalOpen && <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4 overflow-auto">
+        <form className='flex flex-col gap-6 z-50 max-w-[600px] rounded-xl bg-white px-6 py-3 lg:py-6'>
+          <p className="font-bold text-primary">En cochant cette case, vous consentez au transfert de vos données personnelles à :</p>
+          <div className="flex flex-col gap-2">
+            {partners.map((partner, index) => (
+              <div key={index} className="flex items-center gap-2 relative p-2 lg:py-4 lg:px-3 rounded-md lg:shadow-lg">
+                {partner.checked ? <div className="h-5 w-5 border border-slate-300 bg-white p-1 cursor-pointer"><div className="rounded-xs bg-[#f15e00] h-full w-full" onClick={(e: any) => changePartnerChecked(e, partner.value)}></div></div> : <div className="h-5 w-5 border border-slate-300 bg-white p-1 cursor-pointer" onClick={(e: any) => changePartnerChecked(e, partner.value)}></div>}
+                <span dangerouslySetInnerHTML={{ __html: `${partner.name}` }}></span>
               </div>
-            </div>}
-          </>
-        )}
-      </main>
-    </FormsLayout>
+            ))}
+          </div>
+          <div className="flex gap-x-2 items-center justify-between">
+            <button onClick={cancelPartnersModalOpen} className="text-slate-900 flex w-fit justify-center rounded-md p-1 text-sm font-semibold uppercase leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50 z-10">Annuler</button>
+            <button onClick={handlePartnersModalOpen} className="cursor-pointer lg:w-1/3 w-full bg-gradient-to-r from-orange-500 to-orange-700 text-white text-white py-2 rounded-md">Valider</button>
+          </div>
+        </form>
+      </div>}
+    </div>
   );
 }

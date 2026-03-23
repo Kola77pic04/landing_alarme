@@ -2,10 +2,8 @@
 
 import { useState } from "react";
 import { parsePhoneNumberWithError } from 'libphonenumber-js/mobile';
-import Icon from "@mdi/react";
-import { mdiArrowLeft } from "@mdi/js";
 
-export default function PhoneContact({ onPhoneContactSubmit, rollbackStep, firstnameForm, lastnameForm, phoneForm }: { onPhoneContactSubmit: (phone: string) => void; rollbackStep: () => void; firstnameForm: string; lastnameForm: string; phoneForm: string }) {
+export default function PhoneContact({ onPhoneContactSubmit, showPartnersModal, firstnameForm, lastnameForm, phoneForm }: { onPhoneContactSubmit: (phone: string) => void; showPartnersModal: () => void; firstnameForm: string; lastnameForm: string; phoneForm: string }) {
     const [errors, setErrors] = useState<any>(null);
     const [phone, setPhone] = useState<string>(phoneForm);
 
@@ -139,7 +137,7 @@ export default function PhoneContact({ onPhoneContactSubmit, rollbackStep, first
             </div>
 
             <div className="text-[13.5px] text-black font-medium text-justify mt-6">
-                En soumettant ce formulaire, j’accepte d’être rappelé par l'un des partenaires d'eco-tips pour le suivi de ma demande de devis sans engagement. Pour en savoir plus sur la gestion de vos données personnelles et pour exercer vos droits, consultez <a href="#" className="font-bold underline">la politique de confidentialité</a>. Consultez ici la liste de <a href="#" className="font-bold underline">nos partenaires</a>.
+                En soumettant ce formulaire, j’accepte d’être rappelé par l'un des <strong onClick={showPartnersModal} className="cursor-pointer underline">partenaires</strong> de maison-surveillee.fr pour le suivi de ma demande de devis sans engagement. Pour en savoir plus sur la gestion de vos données personnelles et pour exercer vos droits, consultez <a href="#" className="font-bold underline">la politique de confidentialité</a>.
             </div>
         </div>
     );
