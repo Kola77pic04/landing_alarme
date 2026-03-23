@@ -134,11 +134,11 @@ export default function PhoneContact({ onPhoneContactSubmit, showPartnersModal, 
                 </button>
                 <button
                     type="submit" onClick={(e) => handleSubmit(e)}
-                    className={`w-full lg:w-2/5 py-3.5 bg-gradient-to-r from-orange-500 to-orange-700 text-white font-medium lg:font-semibold rounded-lg shadow-lg 
+                    className={`w-full lg:w-3/6 py-3.5 bg-gradient-to-r from-orange-500 to-orange-700 text-white font-medium lg:font-semibold rounded-lg shadow-lg 
                                        hover:bg-red-700 hover:shadow-xl hover:-translate-y-1
                                        transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer`}
                 >
-                    Continuer
+                    Je valide mon devis gratuit
                 </button>
             </div>
 
