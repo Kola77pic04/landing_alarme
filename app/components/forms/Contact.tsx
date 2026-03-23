@@ -4,7 +4,7 @@ import { useState } from "react";
 import Icon from "@mdi/react";
 import { mdiArrowLeft } from "@mdi/js";
 
-export default function Contact({ onContactSubmit, rollbackStep, firstnameForm, lastnameForm }: { onContactSubmit: (firstName: string, lastName: string) => void; rollbackStep: () => void; firstnameForm: string; lastnameForm: string }) {
+export default function Contact({ onContactSubmit, rollbackStep, cityForm, firstnameForm, lastnameForm }: { onContactSubmit: (firstName: string, lastName: string) => void; rollbackStep: () => void; cityForm: string; firstnameForm: string; lastnameForm: string }) {
     const [errors, setErrors] = useState<any>(null);
     const [firstName, setFirstName] = useState<string>(firstnameForm);
     const [lastName, setLastName] = useState<string>(lastnameForm);
@@ -46,7 +46,7 @@ export default function Contact({ onContactSubmit, rollbackStep, firstnameForm, 
         <div className="space-y-4 lg:space-y-6">
             <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-1.5">
-                    <h2 className="font-bold text-center text-lg lg:text-[1.8rem] text-slate-800">Bonne nouvelle ! Le département Paris est éligible au déploiement de cette offre</h2>
+                    <h2 className="font-bold text-center text-lg lg:text-[1.8rem] text-slate-800">Bonne nouvelle ! {cityForm !== "" ? `Le département de ${cityForm}` : "Votre département"} est éligible au déploiement de cette offre</h2>
                 </div>
                 <div>
                     <label htmlFor="firstname" className="text-slate-700 text-sm lg:text-base font-semibold text-left block mb-1">Prénom* :</label>

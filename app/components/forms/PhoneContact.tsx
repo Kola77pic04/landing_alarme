@@ -138,7 +138,7 @@ export default function PhoneContact({ onPhoneContactSubmit, rollbackStep, first
                 </button>
             </div>
 
-            <div className="text-xs text-slate-800 font-medium text-justify mt-6">
+            <div className="text-[13.5px] text-black font-medium text-justify mt-6">
                 En soumettant ce formulaire, j’accepte d’être rappelé par l'un des partenaires d'eco-tips pour le suivi de ma demande de devis sans engagement. Pour en savoir plus sur la gestion de vos données personnelles et pour exercer vos droits, consultez <a href="#" className="font-bold underline">la politique de confidentialité</a>. Consultez ici la liste de <a href="#" className="font-bold underline">nos partenaires</a>.
             </div>
         </div>

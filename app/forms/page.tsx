@@ -23,6 +23,7 @@ export default function Home() {
     people: "",
     pet: "",
     zipCode: "",
+    city: "",
     firstname: "",
     lastname: "",
     phone: "",
@@ -30,10 +31,11 @@ export default function Home() {
   const [step, setStep] = useState<"type" | "residence" | "taille" | "equipement" | "occupants" | "animaux" | "postal" | "contact" | "numéro" | "finish">("type");
 
   const [count, setCount] = useState<number>(1);
-  const [displayCount, _] = useState<number>(9);
+  const [displayCount, _] = useState<number>(10);
   const [progress, setProgress] = useState<number>(Math.floor((count * 100) / displayCount));
   const [direction, setDirection] = useState(1);
   const [initialized, setInitialized] = useState(false);
+  const [show, setShow] = useState(false);
 
   const rollbackStep = () => {
     if (step === "type") {
@@ -148,11 +150,12 @@ export default function Home() {
     window.scrollTo({ top: 0 });
   };
 
-  const handleZipCodeChange = (zipCode: string) => {
+  const handleZipCodeChange = (zipCode: string, city: string) => {
     setDirection(1);
     setForm((prev) => ({
       ...prev,
-      zipCode: zipCode
+      zipCode: zipCode,
+      city: city
     }));
     setStep("contact");
     setCount(count + 1);
@@ -237,6 +240,14 @@ export default function Home() {
     setProgress(Math.floor((count * 100) / displayCount));
   }, [count, displayCount]);
 
+  useEffect(() => {
+    if(form.phone && step === "finish") {
+      setTimeout(() => {
+        setShow(true);
+      }, 11000);
+    }
+  }, [form.phone, step]);
+
   return (
     <FormsLayout>
       <main className="flex flex-col gap-4">
@@ -247,7 +258,7 @@ export default function Home() {
             {step !== "finish" && <div className="px-6 py-2 bg-[#f15e00] mb-2">
               <h2 className="text-xl text-center lg:text-3xl text-white font-semibold tracking-tight">Votre devis gratuit en 1 minute</h2>
             </div>}
-            {!["contact", "numéro", "finish"].includes(step) && <div className="flex flex-col gap-2">
+            {!["postal", "contact", "numéro", "finish"].includes(step) && <div className="flex flex-col gap-2">
               <div className="flex justify-between items-center">
                 <span className="text-xs lg:text-sm text-slate-800 font-semibold">Étape : <span className="capitalize">{step}</span></span>
                 <span className="text-xs lg:text-sm text-red-800 font-semibold">{progress}%</span>
@@ -255,6 +266,10 @@ export default function Home() {
               <div className="w-full bg-gray-200 rounded-full h-2">
                 <div className={`h-2 bg-gradient-to-r from-orange-500 to-orange-700 rounded-lg`} style={{ width: `${progress}%` }}></div>
               </div>
+            </div>}
+
+            {show && <div className="absolute lg:hidden inset-0 bg-[url('/assets/modern_home.jpg')] bg-cover bg-center h-[200px]">
+              <div className="text-white text-lg text-center p-1 bg-[#f15e00] font-bold">-20% OFFERTS sur les packs</div>
             </div>}
             <AnimatePresence mode="wait">
               <motion.div
@@ -272,12 +287,12 @@ export default function Home() {
                 {step === "occupants" && <People onPeopleChange={handlePeopletChange} rollbackStep={rollbackStep} peopleForm={form.people} />}
                 {step === "animaux" && <Pet onPetChange={handlePetChange} rollbackStep={rollbackStep} petForm={form.pet} />}
                 {step === "postal" && <ZipCode onZipCodeChange={handleZipCodeChange} rollbackStep={rollbackStep} zipCodeForm={form.zipCode} />}
-                {step === "contact" && <Contact onContactSubmit={handleContactSubmit} rollbackStep={rollbackStep} firstnameForm={form.firstname} lastnameForm={form.lastname} />}
+                {step === "contact" && <Contact onContactSubmit={handleContactSubmit} rollbackStep={rollbackStep} cityForm={form.city} firstnameForm={form.firstname} lastnameForm={form.lastname} />}
                 {step === "numéro" && <PhoneContact onPhoneContactSubmit={handlePhoneNumberSubmit} rollbackStep={rollbackStep} firstnameForm={form.firstname} lastnameForm={form.lastname} phoneForm={form.phone} />}
                 {step === "finish" && <FinishStep />}
               </motion.div>
             </AnimatePresence>
-            {["contact", "numéro"].includes(step) && <div className="flex flex-col gap-2 mt-2">
+            {["postal", "contact", "numéro"].includes(step) && <div className="flex flex-col gap-2 mt-3">
               <div className="w-full bg-gray-200 rounded-full h-4">
                 <div className={`h-4 bg-gradient-to-r from-orange-500 to-orange-700 rounded-lg text-center text-white text-xs`} style={{ width: `${progress}%` }}>{progress}%</div>
               </div>
