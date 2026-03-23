@@ -147,7 +147,7 @@ export default function Home() {
       setStep("postal");
     }
     setCount(count + 1);
-    window.scrollTo({ top: 0 });
+    window.scrollTo(0, 0);
   };
 
   const handleZipCodeChange = (zipCode: string, city: string) => {
@@ -159,7 +159,7 @@ export default function Home() {
     }));
     setStep("contact");
     setCount(count + 1);
-    window.scrollTo({ top: 0 });
+    window.scrollTo(0, 0);
   };
 
   const handleContactSubmit = async (firstName: string, lastName: string) => {
@@ -172,7 +172,7 @@ export default function Home() {
     setForm(updateForm);
     setCount(count + 1);
     setStep("numéro");
-    window.scrollTo({ top: 0 });
+    window.scrollTo(0, 0);
   };
 
   const handlePhoneNumberSubmit = async (phone: string) => {
@@ -184,7 +184,7 @@ export default function Home() {
     setForm(updateForm);
     await handleFinish(updateForm);
     setStep("finish");
-    window.scrollTo({ top: 0 });
+    window.scrollTo(0, 0);
   };
 
   const handleFinish = async (form: any) => {
