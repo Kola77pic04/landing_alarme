@@ -41,7 +41,7 @@ export default function DemoForm2() {
     };
 
     return (
-        <div className=" bg-slate-50 rounded-2xl p-6 md:p-8 shadow-2xl animate-slide-in w-full max-w-lg mx-auto lg:mx-0 border border-gray-100/50">
+        <div className=" bg-slate-50 rounded-b-2xl p-6 md:p-8 shadow-2xl animate-slide-in w-full max-w-lg mx-auto lg:mx-0 border border-gray-100/50">
             <div className="mb-6">
                 <h3 className="text-xl lg:text-3xl text-slate-700 font-semibold mb-2 tracking-tight">Que souhaitez-vous protéger ?</h3>
                 <p className="text-xs lg:text-sm text-slate-600 mb-6 border-slate-300 border-[1px] px-3 py-4 lg:p-3 rounded-lg">💡 Sélectionnez le type de bien que vous souhaitez sécuriser :</p>

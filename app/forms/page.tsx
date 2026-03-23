@@ -206,6 +206,9 @@ export default function Home() {
           <div className="text-center py-20 text-gray-500">Chargement…</div>
         ) : (
           <>
+            {step !== "finish" && <div className="px-6 py-2 bg-[#f15e00] mb-2">
+              <h2 className="text-xl text-center lg:text-3xl text-white font-semibold tracking-tight">Votre devis gratuit en 1 minute</h2>
+            </div>}
             {step !== "finish" && <div className="flex flex-col gap-2">
               <div className="flex justify-between items-center">
                 <span className="text-xs lg:text-sm text-slate-800 font-semibold">Étape : <span className="capitalize">{step}</span></span>

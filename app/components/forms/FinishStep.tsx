@@ -50,17 +50,16 @@ export default function FinishStep() {
             {/* ✅ Message final */}
             {isLoading && (
                 <div className="text-center space-y-4 max-w-lg bg-white px-6 lg:px-8 py-10 lg:py-16 rounded-xl shadow-sm">
-                    <h3 className="text-2xl lg:text-[28px] text-green-600 font-bold">
-                        ✅ Merci pour votre confiance
+                    <h3 className="text-2xl lg:text-[28px] font-medium">
+                        Merci, votre demande est bien prise en compte.
                     </h3>
 
                     <p className="text-sm text-slate-600">
-                        Nos experts analysent actuellement votre demande afin de vous proposer
-                        les solutions les plus adaptées à votre situation.
+                        Nous allons vous rappeler dans quelques minutes pour prendre rendez-vous avec un expert sécurité.
                     </p>
 
-                    <p className="text-sm text-slate-500">
-                        Un conseiller vous recontactera dans les plus brefs délais.
+                    <p className="text-sm text-slate-700">
+                        Lun.-Ven. 10h-20h
                     </p>
                 </div>
             )}
