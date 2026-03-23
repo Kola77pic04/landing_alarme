@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
   title: "Alarme maison : kits et systèmes d'alarme",
   description: "Votre Télésurveillance 24h/24 & 7j/7. Profitez dès aujourd’hui de votre installation gratuite et de -20% sur votre abonnement mensuel durant 12 mois. Pour un devis en 2minutes indiquez nous la superficie de votre logement en un clic ? Votre estimation gratuite sous  24h , pas une minute à perdre !",
   icons: {

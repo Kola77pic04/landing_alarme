@@ -55,7 +55,7 @@ export default function Contact({ onContactSubmit, rollbackStep, firstnameForm, 
                         inputMode="text"
                         value={firstName}
                         onChange={(e) => handleChange(e)}
-                        className="w-full bg-white text-[#062b31] px-4 py-3 lg:py-4 rounded-lg text-sm lg:text-base outline-none border border-slate-300 font-medium"
+                        className="w-full bg-white text-[#062b31] px-4 py-3 lg:py-4 rounded-lg text-base outline-none border border-slate-300 font-medium"
                         placeholder="Prénom"
                     />
                 </div>
@@ -66,7 +66,7 @@ export default function Contact({ onContactSubmit, rollbackStep, firstnameForm, 
                         inputMode="text"
                         value={lastName}
                         onChange={(e) => handleChange(e)}
-                        className="w-full bg-white text-[#062b31] px-4 py-3 lg:py-4 rounded-lg text-sm lg:text-base outline-none border border-slate-300 font-medium"
+                        className="w-full bg-white text-[#062b31] px-4 py-3 lg:py-4 rounded-lg text-base outline-none border border-slate-300 font-medium"
                         placeholder="Nom"
                     />
                 </div>

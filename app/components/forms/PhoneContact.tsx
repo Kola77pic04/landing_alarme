@@ -120,7 +120,7 @@ export default function PhoneContact({ onPhoneContactSubmit, rollbackStep, first
                         inputMode="text"
                         value={phone}
                         onChange={(e) => handleChange(e)}
-                        className="w-full bg-white text-[#062b31] px-4 py-3 lg:py-4 rounded-lg text-sm lg:text-base outline-none border border-slate-300 font-medium"
+                        className="w-full bg-white text-[#062b31] px-4 py-3 lg:py-4 rounded-lg text-base outline-none border border-slate-300 font-medium"
                         placeholder="06 12 34 56 78"
                     />
                 </div>

@@ -48,7 +48,7 @@ export default function ZipCode({ onZipCodeChange, rollbackStep, zipCodeForm }: 
                     pattern="\d{5}"
                     value={zipCode}
                     onChange={(e) => handleChange(e)}
-                    className="w-full bg-white text-[#062b31] px-4 py-3 lg:py-4 rounded-lg text-sm lg:text-base font-medium border border-slate-300 outline-none"
+                    className="w-full bg-white text-[#062b31] px-4 py-3 lg:py-4 rounded-lg text-base font-medium border border-slate-300 outline-none"
                     placeholder="75001"
                 />
             </div>

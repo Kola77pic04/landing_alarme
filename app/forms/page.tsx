@@ -77,7 +77,7 @@ export default function Home() {
     }));
     setStep("residence");
     setCount(count + 1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   };
 
   const handleResidenceChange = (residence: string) => {
@@ -88,7 +88,7 @@ export default function Home() {
     }));
     setStep("taille");
     setCount(count + 1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   };
 
   const handleHeightHabitationChange = (heightHabitation: string) => {
@@ -99,7 +99,7 @@ export default function Home() {
     }));
     setStep("equipement");
     setCount(count + 1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   };
 
   const handleEquipmentChange = (equipment: string) => {
@@ -110,7 +110,7 @@ export default function Home() {
     }));
     setStep("occupants");
     setCount(count + 1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   };
 
   const handlePeopletChange = async (people: string) => {
@@ -128,7 +128,7 @@ export default function Home() {
     // }
     setStep("animaux")
     setCount(count + 1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   };
 
   const handlePetChange = async (pet: string) => {
