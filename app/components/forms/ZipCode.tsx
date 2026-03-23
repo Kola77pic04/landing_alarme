@@ -22,7 +22,7 @@ export default function ZipCode({ onZipCodeChange, rollbackStep, zipCodeForm }: 
     const getCityFromZip = async (zip: string) => {
         const res = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${zip}`);
         const data = await res.json();
-        if(data.length > 0) {
+        if (data.length > 0) {
             setCity(data[0].nom);
         }
     };
@@ -64,14 +64,18 @@ export default function ZipCode({ onZipCodeChange, rollbackStep, zipCodeForm }: 
             </div>
             {errors && <p className="text-red-600 text-center p-2 rounded border-red-100 border-[1px] bg-red-50 font-semibold text-xs lg:text-sm">{errors}</p>}
             {/* --- BOUTON --- */}
-            <div className="flex justify-center items-center gap-4 mt-6">
+            <div className="flex justify-between gap-4">
+                <button className="px-4 lg:px-8 flex items-center gap-2 text-[#f15e00] text-sm border-[#f15e00] hover:border-[#f15e00]/80 hover:text-[#f15e00]/80 hover:duration-300 hover:ease-in-out border-[1px] rounded-lg cursor-pointer" onClick={rollbackStep}>
+                    <Icon path={mdiArrowLeft} size={0.8} />
+                    <span className="hidden md:block">Retour</span>
+                </button>
                 <button
                     type="submit" onClick={(e) => handleSubmit(e)}
-                    className={`w-2/3 lg:w-2/5 py-3.5 bg-gradient-to-r from-orange-500 to-orange-700 text-white font-medium lg:font-semibold rounded-full shadow-lg 
+                    className={`w-full lg:w-2/5 py-3.5 bg-gradient-to-r from-orange-500 to-orange-700 text-white font-medium lg:font-semibold rounded-lg shadow-lg 
                                        hover:bg-red-700 hover:shadow-xl hover:-translate-y-1
                                        transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer`}
                 >
-                    Suivant
+                    Continuer
                 </button>
             </div>
         </div>

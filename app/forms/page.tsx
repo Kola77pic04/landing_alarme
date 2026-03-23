@@ -330,7 +330,7 @@ export default function Home() {
                   {step === "animaux" && <Pet onPetChange={handlePetChange} rollbackStep={rollbackStep} petForm={form.pet} />}
                   {step === "postal" && <ZipCode onZipCodeChange={handleZipCodeChange} rollbackStep={rollbackStep} zipCodeForm={form.zipCode} />}
                   {step === "contact" && <Contact onContactSubmit={handleContactSubmit} rollbackStep={rollbackStep} cityForm={form.city} firstnameForm={form.firstname} lastnameForm={form.lastname} />}
-                  {step === "numéro" && <PhoneContact onPhoneContactSubmit={handlePhoneNumberSubmit} showPartnersModal={showPartnersModal} firstnameForm={form.firstname} lastnameForm={form.lastname} phoneForm={form.phone} />}
+                  {step === "numéro" && <PhoneContact onPhoneContactSubmit={handlePhoneNumberSubmit} showPartnersModal={showPartnersModal} rollbackStep={rollbackStep} firstnameForm={form.firstname} lastnameForm={form.lastname} phoneForm={form.phone} />}
                   {step === "finish" && <FinishStep />}
                 </motion.div>
               </AnimatePresence>
