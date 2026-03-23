@@ -247,7 +247,7 @@ export default function Home() {
             {step !== "finish" && <div className="px-6 py-2 bg-[#f15e00] mb-2">
               <h2 className="text-xl text-center lg:text-3xl text-white font-semibold tracking-tight">Votre devis gratuit en 1 minute</h2>
             </div>}
-            {step !== "finish" && <div className="flex flex-col gap-2">
+            {!["contact", "numéro", "finish"].includes(step) && <div className="flex flex-col gap-2">
               <div className="flex justify-between items-center">
                 <span className="text-xs lg:text-sm text-slate-800 font-semibold">Étape : <span className="capitalize">{step}</span></span>
                 <span className="text-xs lg:text-sm text-red-800 font-semibold">{progress}%</span>
@@ -276,6 +276,11 @@ export default function Home() {
                 {step === "finish" && <FinishStep />}
               </motion.div>
             </AnimatePresence>
+            {["contact", "numéro"].includes(step) && <div className="flex flex-col gap-2 mt-2">
+              <div className="w-full bg-gray-200 rounded-full h-4">
+                <div className={`h-4 bg-gradient-to-r from-orange-500 to-orange-700 rounded-lg text-center text-white text-xs`} style={{ width: `${progress}%` }}>{progress}%</div>
+              </div>
+            </div>}
           </>
         )}
       </main>

@@ -126,24 +126,20 @@ export default function PhoneContact({ onPhoneContactSubmit, rollbackStep, first
                 </div>
             </div>
             {errors && <p className="text-red-600 text-center p-2 rounded border-red-100 border-[1px] bg-red-50 font-semibold text-xs lg:text-sm">{errors}</p>}
-
-            <div className="text-xs text-slate-700 text-justify">
-                En soumettant ce formulaire, j’accepte d’être rappelé par l'un des partenaires d'eco-tips pour le suivi de ma demande de devis sans engagement. Pour en savoir plus sur la gestion de vos données personnelles et pour exercer vos droits, consultez <a href="#" className="font-bold underline">la politique de confidentialité</a>. Consultez ici la liste de nos partenaires.
-            </div>
             {/* --- BOUTON --- */}
-            <div className="flex justify-between gap-4">
-                <button className="px-4 lg:px-8 flex items-center gap-2 text-[#f15e00] text-sm border-[#f15e00] hover:border-[#f15e00]/80 hover:text-[#f15e00]/80 hover:duration-300 hover:ease-in-out border-[1px] rounded-lg cursor-pointer" onClick={rollbackStep}>
-                    <Icon path={mdiArrowLeft} size={0.8} />
-                    <span className="hidden md:block">Retour</span>
-                </button>
+            <div className="flex justify-center items-center gap-4 mt-6">
                 <button
                     type="submit" onClick={(e) => handleSubmit(e)}
-                    className={`w-full lg:w-3/6 py-3.5 bg-gradient-to-r from-orange-500 to-orange-700 text-white font-medium lg:font-semibold rounded-lg shadow-lg 
+                    className={`w-3/4 lg:w-3/6 py-3.5 bg-gradient-to-r from-orange-500 to-orange-700 text-white font-medium lg:font-semibold rounded-full shadow-lg 
                                        hover:bg-red-700 hover:shadow-xl hover:-translate-y-1
                                        transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer`}
                 >
                     Je valide mon devis gratuit
                 </button>
+            </div>
+
+            <div className="text-xs text-slate-800 font-medium text-justify mt-6">
+                En soumettant ce formulaire, j’accepte d’être rappelé par l'un des partenaires d'eco-tips pour le suivi de ma demande de devis sans engagement. Pour en savoir plus sur la gestion de vos données personnelles et pour exercer vos droits, consultez <a href="#" className="font-bold underline">la politique de confidentialité</a>. Consultez ici la liste de <a href="#" className="font-bold underline">nos partenaires</a>.
             </div>
         </div>
     );
