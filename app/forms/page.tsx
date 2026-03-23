@@ -10,6 +10,9 @@ import HeightHabitation from '../components/forms/HeightHabitation';
 import Equipment from '../components/forms/Equipment';
 import People from '../components/forms/People';
 import { motion, AnimatePresence } from "framer-motion";
+import Pet from '../components/forms/Pet';
+import { PhoneNumber } from 'libphonenumber-js';
+import PhoneContact from '../components/forms/PhoneContact';
 
 export default function Home() {
   const [form, setForm] = useState({
@@ -18,15 +21,16 @@ export default function Home() {
     heightHabitation: "",
     equipment: "",
     people: "",
+    pet: "",
     zipCode: "",
     firstname: "",
     lastname: "",
     phone: "",
   });
-  const [step, setStep] = useState<"type" | "residence" | "taille" | "equipement" | "occupants" | "postal" | "contact" | "finish">("type");
+  const [step, setStep] = useState<"type" | "residence" | "taille" | "equipement" | "occupants" | "animaux" | "postal" | "contact" | "numéro" | "finish">("type");
 
   const [count, setCount] = useState<number>(1);
-  const [displayCount, setDisplayCount] = useState<number>(5);
+  const [displayCount, _] = useState<number>(9);
   const [progress, setProgress] = useState<number>(Math.floor((count * 100) / displayCount));
   const [direction, setDirection] = useState(1);
   const [initialized, setInitialized] = useState(false);
@@ -50,11 +54,17 @@ export default function Home() {
       if (step === "occupants") {
         setStep("equipement");
       }
-      if (step === "postal") {
+      if (step === "animaux") {
         setStep("occupants");
+      }
+      if (step === "postal") {
+        setStep("animaux");
       }
       if (step === "contact") {
         setStep("postal");
+      }
+      if (step === "numéro") {
+        setStep("contact");
       }
     }
   };
@@ -110,7 +120,25 @@ export default function Home() {
       people: people
     };
     setForm(updateForm);
-    if (displayCount === 5) {
+    // if (displayCount === 5) {
+    //   await handleFinish(updateForm);
+    //   setStep("finish");
+    // } else {
+    //   setStep("postal");
+    // }
+    setStep("animaux")
+    setCount(count + 1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handlePetChange = async (pet: string) => {
+    setDirection(1);
+    const updateForm = {
+      ...form,
+      pet: pet
+    };
+    setForm(updateForm);
+    if (displayCount === 6) {
       await handleFinish(updateForm);
       setStep("finish");
     } else {
@@ -131,12 +159,22 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleContactSubmit = async (firstName: string, lastName: string, phone: string) => {
+  const handleContactSubmit = async (firstName: string, lastName: string) => {
     setDirection(1);
     const updateForm = {
       ...form,
       firstname: firstName,
       lastname: lastName,
+    };
+    setForm(updateForm);
+    setCount(count + 1);
+    setStep("numéro");
+  };
+
+  const handlePhoneNumberSubmit = async (phone: string) => {
+    setDirection(1);
+    const updateForm = {
+      ...form,
       phone: phone
     };
     setForm(updateForm);
@@ -151,34 +189,34 @@ export default function Home() {
 
   useEffect(() => {
     const type = localStorage.getItem("type");
-    const utm_source = localStorage.getItem("utm_source");
-    const redirect = localStorage.getItem("redirect");
+    // const utm_source = localStorage.getItem("utm_source");
+    // const redirect = localStorage.getItem("redirect");
 
-    if (utm_source && ["google", "facebook"].includes(utm_source?.toLocaleLowerCase().trim() || "")) {
-      setStep("residence");
-      setDirection(1);
-      setDisplayCount(7);
-      setCount(count + 1);
-      setForm((prev) => ({
-        ...prev,
-        utm_source: utm_source,
-      }));
-      localStorage.removeItem("utm_source");
-      setInitialized(true);
-    }
+    // if (utm_source && ["google", "facebook"].includes(utm_source?.toLocaleLowerCase().trim() || "")) {
+    //   setStep("residence");
+    //   setDirection(1);
+    //   setDisplayCount(9);
+    //   setCount(count + 1);
+    //   setForm((prev) => ({
+    //     ...prev,
+    //     utm_source: utm_source,
+    //   }));
+    //   localStorage.removeItem("utm_source");
+    //   setInitialized(true);
+    // }
 
-    if (redirect && redirect.trim() === "true") {
-      setStep("residence");
-      setDirection(1);
-      setDisplayCount(5);
-      setCount(count + 1);
-      setForm((prev) => ({
-        ...prev,
-        redirect: redirect,
-      }));
-      localStorage.removeItem("redirect");
-      setInitialized(true);
-    }
+    // if (redirect && redirect.trim() === "true") {
+    //   setStep("residence");
+    //   setDirection(1);
+    //   setDisplayCount(6);
+    //   setCount(count + 1);
+    //   setForm((prev) => ({
+    //     ...prev,
+    //     redirect: redirect,
+    //   }));
+    //   localStorage.removeItem("redirect");
+    //   setInitialized(true);
+    // }
 
     if (type) {
       setStep("residence");
@@ -231,8 +269,10 @@ export default function Home() {
                 {step === "taille" && <HeightHabitation onHeightHabitationChange={handleHeightHabitationChange} rollbackStep={rollbackStep} heightHabitationForm={form.heightHabitation} />}
                 {step === "equipement" && <Equipment onEquipmentChange={handleEquipmentChange} rollbackStep={rollbackStep} equipmentForm={form.equipment} />}
                 {step === "occupants" && <People onPeopleChange={handlePeopletChange} rollbackStep={rollbackStep} peopleForm={form.people} />}
+                {step === "animaux" && <Pet onPetChange={handlePetChange} rollbackStep={rollbackStep} petForm={form.pet} />}
                 {step === "postal" && <ZipCode onZipCodeChange={handleZipCodeChange} rollbackStep={rollbackStep} zipCodeForm={form.zipCode} />}
-                {step === "contact" && <Contact onContactSubmit={handleContactSubmit} rollbackStep={rollbackStep} firstnameForm={form.firstname} lastnameForm={form.lastname} phoneForm={form.phone} />}
+                {step === "contact" && <Contact onContactSubmit={handleContactSubmit} rollbackStep={rollbackStep} firstnameForm={form.firstname} lastnameForm={form.lastname} />}
+                {step === "numéro" && <PhoneContact onPhoneContactSubmit={handlePhoneNumberSubmit} rollbackStep={rollbackStep} firstnameForm={form.firstname} lastnameForm={form.lastname} phoneForm={form.phone} />}
                 {step === "finish" && <FinishStep />}
               </motion.div>
             </AnimatePresence>
