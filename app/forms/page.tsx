@@ -172,6 +172,7 @@ export default function Home() {
     setForm(updateForm);
     setCount(count + 1);
     setStep("numéro");
+    window.scrollTo({ top: 0 });
   };
 
   const handlePhoneNumberSubmit = async (phone: string) => {
@@ -183,6 +184,7 @@ export default function Home() {
     setForm(updateForm);
     await handleFinish(updateForm);
     setStep("finish");
+    window.scrollTo({ top: 0 });
   };
 
   const handleFinish = async (form: any) => {
