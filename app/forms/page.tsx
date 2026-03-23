@@ -145,7 +145,7 @@ export default function Home() {
       setStep("postal");
     }
     setCount(count + 1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0 });
   };
 
   const handleZipCodeChange = (zipCode: string) => {
@@ -156,7 +156,7 @@ export default function Home() {
     }));
     setStep("contact");
     setCount(count + 1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0 });
   };
 
   const handleContactSubmit = async (firstName: string, lastName: string) => {
@@ -259,10 +259,11 @@ export default function Home() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={step}
-                initial={{ x: direction * 100, opacity: 0 }}
+                initial={{ x: direction * 50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                exit={{ x: direction * -100, opacity: 0 }}
+                exit={{ x: direction * -50, opacity: 0 }}
                 transition={{ duration: 0.2 }}
+                style={{ willChange: "transform" }}
               >
                 {step === "type" && <TypeHabitation onTypeChange={handleTypeChange} rollbackStep={rollbackStep} typeForm={form.type} />}
                 {step === "residence" && <Residence onResidenceChange={handleResidenceChange} rollbackStep={rollbackStep} residenceForm={form.residence} />}

@@ -4,7 +4,7 @@ export default function FormsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="max-h-screen bg-slate-50 overflow-hidden">
+    <div className="min-h-[100dvh] bg-slate-50 overflow-hidden">
         <div className="min-h-screen px-2 pt-5 lg:pt-10 max-w-[650px] mx-auto">
           {children}
         </div>
